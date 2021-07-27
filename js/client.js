@@ -13,9 +13,9 @@ const append = (message, position)=>{
     const messageElement = document.createElement('div');
     messageElement.innerHTML = message;
     messageElement.classList.add('message');
-    messageElement.classList.add(position); //position:left or right
+    messageElement.classList.add(position); 
     messageContainer.append(messageElement);
-    if(position =='left'){ //iska mtlb hamare window mei hamara message ka audio play na ho
+    if(position =='left'){ 
         messageElement.style.backgroundColor="rgb(255 197 255)";
         audio.play();
         
@@ -47,22 +47,13 @@ socket.on('left', name =>{
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const message = messageInput.value;
-    append(`<b>You:</b> ${message}`, 'right');     //hume apna message bhi dikhnna chaiye
+    append(`<b>You:</b> ${message}`, 'right');     
     socket.emit('send', message);
     messageInput.value = ''
 })
 
 
-// //styling
-// // let colorArr=['Lavender','Thistle','Plum','Violet','Violet','Fuchsia','Magenta','MediumOrchid','MediumPurple'];
-// let colorArr=['white','grey','blue'];
-// colorArr.forEach(element => {
-//     color=element;
-// setInterval(() =>{
-//         messageContainer.style.borderColor=`${color}`;
-//            console.log(color);
-//     }, 1000);
-// });
+//styling
 
 messageInput.addEventListener('focus',()=>{
     messageInput.style.border="solid 4px #dca1e8";
